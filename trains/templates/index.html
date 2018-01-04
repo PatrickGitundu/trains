@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Kiwiland Trains</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Free icon set downloaded from freefavicon.com-->
+        <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
+        <!-- Materialize CSS: materializecss.com -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css">
+        <!-- Google icon set used by Materialize--> 
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    </head>
+    <body>
+        <div class="container">
+            <p class="center-align">Kiwiland Trains</p>
+            <div class="divider z-depth-3"></div>
+            <form id="trainsForm">    
+                <div class="row" style="margin-top: 10px">
+                    <div class="col s4">
+                        <div class="input-field tooltipped" data-position="top" data-delay="30" data-tooltip="Select Metric to Use">
+                            <select id="metric" >
+                                <option value="0" disabled selected>Select</option>
+                                <option value="1">Calculate Route Distance</option>
+                                <option value="2">Number of Trips</option>
+                                <option value="3">Shortest Route Length</option>
+                                <option value="4">Number of Routes to Destination</option>
+                            </select>
+						</div>
+                    </div>
+                    <div class="col s4">
+                        <div class="input-field tooltipped" data-position="top" data-delay="30" data-tooltip="Select consecutive stations: for example A,B; A,D or C,D,E.">
+                            <select id="stations" multiple>
+                                <option value="0" disabled>Select Stations</option>
+                                <option value="1">A</option>
+                                <option value="2">B</option>
+                                <option value="3">C</option>
+                                <option value="4">D</option>
+                                <option value="5">E</option>
+                            </select>
+						</div>
+                    </div>
+                    <div class="col s1">
+                        <p style="margin-top:20px">OR</p>
+                    </div>
+                    <div class="col s3">
+                        <label for="randomStations">Non-Consecutive Stations</label>
+                        <input id="randomStations" type="text" name="randomStations" class="input truncate tooltipped" placeholder="Enter Route" data-position="bottom" data-delay="30s" data-tooltip="Enter a random route: for example C,C or C,A,D; with stations separated by commas">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s4">
+                    	 <div class="input-field tooltipped" data-position="top" data-delay="30" data-tooltip="To be used with stops and distances; for example Exact number of stops or max distance.">
+                            <select id="maxExact" >
+                                <option value="0" disabled selected>Select</option>
+                                <option value="1">Maximum</option>
+                                <option value="2">Exact</option>
+                            </select>
+                         	<label for="maxExact">Maximum or Exact</label>
+                   		</div> 
+                    </div>
+                    <div class="col s4">
+                        <label for="numberStops">Stops</label>
+                        <input id="numberStops" type="text" name="numberStops" class="" placeholder="0">
+                    </div>
+                    <div class="col s4">
+                        <label for="distanceToGo">Distance</label>
+                        <input id="distanceToGo" type="text" name="distanceToGo" class="" placeholder="0">
+                    </div>
+                    <div class="row">
+                        <div class="col s2 offset-s10">
+                            <div class="right" style="margin-top: 10px">
+                                <a id="getOutput" class="btn-floating btn-large waves-effect waves-light blue" href="#"><i class="material-icons">send</i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div class="divider z-depth-3"></div>
+            <div class="progress" style="display: none">
+                <div class="indeterminate"></div>
+            </div>
+            <div class="row">
+                <div class="left input-field col s6 offset-s3">
+                    <div id="outputDiv" class="card-panel teal">
+                        <span class="white-text">
+                            Output
+                        </span>
+                    </div>
+                </div>
+			</div>
+            <div id="viewGraph" class="card-panel hoverable"></div>
+            <div id="modal1" class="modal">
+                <div class="modal-content">
+                  <p>You did not select enough stations</p>
+                </div>
+                <div class="modal-footer">
+                  <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">OKAY</a>
+                </div>
+            </div>
+            <div id="modal2" class="modal">
+                <div class="modal-content">
+                  <p>One of the stations/stops selected does not exist.\nPlease check your stations again.</p>
+                </div>
+                <div class="modal-footer">
+                  <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">OKAY</a>
+                </div>
+            </div>
+            <div id="modal3" class="modal">
+                <div class="modal-content">
+                  <p>Your number of stops or distance to be evaluated is not a number.\nPlease check your stops,distance entries again.</p>
+                </div>
+                <div class="modal-footer">
+                  <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">OKAY</a>
+                </div>
+            </div>
+        </div>
+        <script src ="https://code.jquery.com/jquery-2.2.1.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script>
+        <script src="https://d3js.org/d3.v3.min.js"></script>
+        <script src="{{ url_for('static', filename='js/jsnetworkx.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/trains.js') }}"></script>
+    </body>
+</html>
