@@ -31,16 +31,16 @@ Graph: AB5, BC4, CD8, DC8, DE6, AD5, CE2, EB3, AE7
 
 Expected Output:
 
-Output #1: 9
-Output #2: 5
-Output #3: 13
-Output #4: 22
-Output #5: NO SUCH ROUTE
-Output #6: 2
-Output #7: 3
-Output #8: 9
-Output #9: 9
-Output #10: 7
+Output #1: 9 </br>
+Output #2: 5 </br>
+Output #3: 13 </br>
+Output #4: 22 </br>
+Output #5: NO SUCH ROUTE </br>
+Output #6: 2 </br>
+Output #7: 3 </br>
+Output #8: 9 </br>
+Output #9: 9 </br>
+Output #10: 7 </br>
 
 ## To do
 <ol>
